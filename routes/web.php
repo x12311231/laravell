@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,7 @@ Route::get('/test', function() {
 
 Route::get('/tt', [TestController::class, 'index']);
 Route::get('/test/test_order', [TestController::class, 'testOrder']);
+Route::get('order/create', [OrderController::class, 'create']);
+Route::get('order/create1', [OrderController::class, 'create1']);
 
 

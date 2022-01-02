@@ -23,3 +23,6 @@ Route::get('/test', function() {
 });
 
 Route::get('/tt', [TestController::class, 'index']);
+Route::get('/test/test_order', [TestController::class, 'testOrder']);
+
+

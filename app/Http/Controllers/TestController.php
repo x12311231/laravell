@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Orders;
+use App\Jobs\CloseOrder;
 
 class TestController extends Controller
 {
@@ -19,10 +20,14 @@ class TestController extends Controller
     }
 
     public function testOrder() {
-        Orders::insert([
+        $order = Orders::create([
             'name' => 'test',
-            'ordersn' => time(),
+            'ordersn' => time() . rand(1, 100),
         ]);
-        $this->dispatch(new CloseOrder())
+        //$this->dispatch((new CloseOrder($order, 30))->onQueue('default'));
+        CloseOrder::dispatch($order, 30)
+            ->delay(now()->addMinutes(1));
+        return $order;
+
     }
 }

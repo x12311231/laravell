@@ -9,6 +9,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use app\Models\Orders;
+use Illuminate\Support\Facades\Log;
 
 class CloseOrder implements ShouldQueue
 {
@@ -36,7 +37,9 @@ class CloseOrder implements ShouldQueue
     {
         //// 判断对应的订单是否已经被支付
         // 如果已经支付则不需要关闭订单，直接退出
+        Log::debug('-------sdfasdf--------------' . var_export($this->order, true));
         if ($this->order->pay_at) {
+            Log::debug('---------------------');
             return;
         }
         // 通过事务执行 sql

@@ -9,4 +9,6 @@
   3,任务分发，JobName::dispatch($object)
 
 #延时任务失败处理
+  1,任务失败后写入mysql failed_jobs表
 
+#延时任务失败后的重试机制

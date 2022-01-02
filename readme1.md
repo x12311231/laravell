@@ -12,3 +12,6 @@
   1,任务失败后写入mysql failed_jobs表
 
 #延时任务失败后的重试机制
+  1,手动重试
+   1)命令行查看失败任务：php artisan queue:failed
+   2)命令行执行重试：php artisan queue:retry all(或者具体任务id)

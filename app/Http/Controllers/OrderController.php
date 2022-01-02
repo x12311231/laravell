@@ -16,6 +16,7 @@ class OrderController extends Controller
             $order = Orders::create([
                 'name' => 'create',
                 'ordersn' => time() . rand(1, 100),
+                'score' => 10,
             ]);
             //$this->dispatch((new CloseOrder($order, 30))->onQueue('default'));
             CloseOrder::dispatch($order, 30)
@@ -35,6 +36,7 @@ class OrderController extends Controller
             $order = Orders::create([
                 'name' => 'create1',
                 'ordersn' => time() . rand(1, 100),
+                'score' => 10,
             ]);
             //$this->dispatch((new CloseOrder($order, 30))->onQueue('default'));
             CloseOrderFail::dispatch($order, 30)

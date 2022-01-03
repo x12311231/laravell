@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use App\Model\Score;
+use App\Models\Score;
 
 class AddScore implements ShouldQueue
 {
@@ -16,15 +16,20 @@ class AddScore implements ShouldQueue
 
     protected $ordersn;
 
+    protected $score;
+
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($ordersn)
+    public function __construct($ordersn,
+        //Score $score
+        )
     {
         //
         $this->ordersn = $ordersn;
+        //$this->score = $score;
     }
 
     /**
@@ -34,7 +39,14 @@ class AddScore implements ShouldQueue
      */
     public function handle()
     {
-        //
-        Score::addOne($this->ordersn);
+        //远程通知加积分
+        $res = app()->get('rpc1')->test();
+        if (!$res) {
+            throw new Exception('远程调用失败');
+        }
+        //$res = $this->score->where(['ordersn' => $this->ordersn])->get();
+        //if (!$res) {
+        //    $this->score->addOne($this->ordersn);
+        //}
     }
 }

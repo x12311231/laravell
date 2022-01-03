@@ -3,44 +3,48 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Jobs\AddScore;
 use App\Models\Orders as Order;
-use App\Models\PayNotify;
+use App\Models\Pay;
+use App\Jobs\AddScore;
+use App\Models\Score;
 
-class PayNotifyController extends Controller
+class PayController extends Controller
 {
+    //
     protected $order;
-    protected $payNotify;
+    protected $pay;
+    //protected $score;
 
-    public function __construct(Order $order, PayNotify $payNotify)
+    public function __construct(Pay $pay, Order $order,
+    //    Score $score
+    )
     {
-        //$this->order = $order;
-        //$this->payNotify = $payNotify;
-        $this->order = new Orders();
-        $this->payNotify = new PayNotify();
+        $this->pay = $pay;
+        $this->order = $order;
+    //    $this->score = $score;
     }
     //
     public function notify(Request $request) {
         if (!$this->verify()) {
-            return false;
+            return 'false';
         }
 
         $ordersn = $request->input('ordersn');
         \DB::beginTransaction();
         try {
             $res = $this->order->paid($ordersn);
-            $res1 = $this->payNotify->paid($ordersn);
+            $res1 = $this->pay->paid($ordersn);
             if (!$res || !$res1) {
                 \DB::rollback();
-                return false;
+                return 'false';
             }
-            AddScore::dispatchNow($ordersn);
+            AddScore::dispatch($ordersn);;
         } catch (Exception $e) {
             \DB::rollback();
-            return false;
+            return 'false';
         }
         \DB::commit();
-        return true;
+        return 'true';
     }
 
     protected function verify() {

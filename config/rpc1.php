@@ -5,10 +5,10 @@ return [
     'driver' => 'Socket',
 
     'server' => [
-        'host' => 'laravel.test',
+        'host' => '192.168.0.21',
         'port' => 6666,
         'ipv6' => '',
         'udp' => '',
-        'nonblock' => true,
+        'nonblock' => false,
     ],
 ];

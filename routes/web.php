@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PayController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +31,6 @@ Route::get('/tsocket', [TestController::class, 'testSocket']);
 Route::get('/test/test_order', [TestController::class, 'testOrder']);
 Route::get('order/create', [OrderController::class, 'create']);
 Route::get('order/create1', [OrderController::class, 'create1']);
+Route::get('pay/notify', [PayController::class, 'notify']);
 
 

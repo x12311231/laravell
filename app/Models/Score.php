@@ -14,11 +14,12 @@ class Score extends Model
     public function addOne(string $ordersn)
     {
         $this->ordersn = $ordersn;
-        $order = Order::where(['ordersn' => $ordersn])->get();
+        $order = Order::where(['ordersn' => $ordersn])->first();
         if (!$order) {
             throw new Exception('order not found');
         }
-        $this->score = $order->score;
+        //dd($order->attributes);
+        $this->score = $order->attributes['score'];
         return $this->save();
     }
 }

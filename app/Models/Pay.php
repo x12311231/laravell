@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PayNotify extends Model
+class Pay extends Model
 {
     use HasFactory;
 
@@ -15,7 +15,15 @@ class PayNotify extends Model
     {
 
         return $this->where(['ordersn' => $ordersn])
-            ->update(['is_pay' => 1]);
+            ->update(['is_pay' => 1,
+            //'pay_at' => date('Y-m-d H:i:s')
+            ]);
+    }
+
+    public function addOne($ordersn)
+    {
+        $this->ordersn = $ordersn;
+        $this->save();
     }
 
     public function addScored($ordersn)

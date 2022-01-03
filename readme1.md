@@ -52,3 +52,7 @@ vendor/composer/autoload_classmap.php:5207:    'X12311231\\Rpc1\\Client\\Client'
     vendor/x12311231/rpc1/src/Test1.php:2:namespace X12311231\Rpc1;
     
 ```
+
+#laravel 注册服务提供者
+  1,命令行创建php artisan make:provider TestServiceProvider
+  2,config/app.php里providers数组添加服务提供者class

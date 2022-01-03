@@ -11,12 +11,13 @@
         "laravel/framework": "^8.65",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "x12311231/rpc1": "dev-master"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
-        "laravel/sail": "^1.0.1",
+        "laravel/sail": "1.12.9",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^5.10",
         "phpunit/phpunit": "^9.5.10"
@@ -59,5 +60,11 @@
         "sort-packages": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+        "local": {
+            "type": "path",
+            "url": "./vendordev/x12311231/rpc1/"
+        }
+    }
 }

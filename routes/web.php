@@ -24,6 +24,9 @@ Route::get('/test', function() {
 });
 
 Route::get('/tt', [TestController::class, 'index']);
+Route::get('/t2', [TestController::class, 'test2']);
+Route::get('/t3', [TestController::class, 'test3']);
+Route::get('/tsocket', [TestController::class, 'testSocket']);
 Route::get('/test/test_order', [TestController::class, 'testOrder']);
 Route::get('order/create', [OrderController::class, 'create']);
 Route::get('order/create1', [OrderController::class, 'create1']);

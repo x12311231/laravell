@@ -59,3 +59,6 @@ vendor/composer/autoload_classmap.php:5207:    'X12311231\\Rpc1\\Client\\Client'
 
 #laravel 分发延时队列任务时模型写入数据ModelNotFoundException问题
 
+
+#laravel 统计失败任务数
+  1,通过mysql查询

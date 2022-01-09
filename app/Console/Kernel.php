@@ -2,11 +2,17 @@
 
 namespace App\Console;
 
+use App\Jobs\FailedJobAlert;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Carbon;
 
 class Kernel extends ConsoleKernel
 {
+    protected function scheduleTimeZone()
+    {
+        return new \DateTimeZone('UTC');
+    }
     /**
      * Define the application's command schedule.
      *
@@ -15,7 +21,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        //$schedule->command('inspire')->hourly();
+        $schedule->call(function() {
+            logger()->info('schedule test--------------');
+        })->everyMinute();
+        $schedule->job(new FailedJobAlert())->everyMinute();
     }
 
     /**

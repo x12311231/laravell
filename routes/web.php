@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PayController;
+use App\Http\Controllers\Admin\OrderController as AdminOrder;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,4 +34,8 @@ Route::get('order/create', [OrderController::class, 'create']);
 Route::get('order/create1', [OrderController::class, 'create1']);
 Route::get('pay/notify', [PayController::class, 'notify']);
 
+Route::prefix('admin')->group(function () {
+    Route::resource('order', AdminOrder::class);
+});
+//Route::resource('order', 'Admin/OrderController');
 

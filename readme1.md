@@ -62,3 +62,16 @@ vendor/composer/autoload_classmap.php:5207:    'X12311231\\Rpc1\\Client\\Client'
 
 #laravel 统计失败任务数
   1,通过mysql查询
+
+#javascript数组
+```
+var b = [['id','in',[1,3]],['is_close','=',0]]
+```
+  1,数组字符串元素必须用单引号
+  
+#javascript json
+```angular2html
+'[["id","in",[1,3]],["is_close","=",0]]'
+```
+  1,字符串用单引号
+  2,字符串内用双引号分离元素

@@ -33,6 +33,7 @@ class TestController extends Controller
     public function testOrder() {
         $order = Orders::create([
             'name' => 'test',
+            'score' => 10,
             'ordersn' => time() . rand(1, 100),
         ]);
         //$this->dispatch((new CloseOrder($order, 30))->onQueue('default'));

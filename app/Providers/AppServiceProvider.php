@@ -29,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
         Log::debug('testtttttttttttttt');
         DB::listen(function($sql) {
             Log::debug('[sql]' . $sql->sql);
+            Log::debug('[sql]' . var_export(json_encode($sql), true));
         });
     }
 }

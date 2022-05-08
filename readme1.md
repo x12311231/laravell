@@ -76,6 +76,6 @@ var b = [['id','in',[1,3]],['is_close','=',0]]
   1,字符串用单引号
   2,字符串内用双引号分离元素
 
-#引入了rabbitmq作为队列（20220508）
+#引入了rabbitmq作为队列（20220508）https://www.5axxw.com/wiki/content/21fnkg
   1，直接输出hello的简单延时任务执行成功
   2，新增订单后延时修改状态的任务执行失败，这个在redis作为驱动时是成功的

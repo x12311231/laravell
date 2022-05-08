@@ -12,8 +12,9 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "predis/predis": "^1.1",
-        "x12311231/rpc1": "dev-master",
-        "tabuna/stone": "0.0.2"
+        "tabuna/stone": "0.0.2",
+        "vladimir-yuldashev/laravel-queue-rabbitmq": "v11.3.0",
+        "x12311231/rpc1": "dev-master"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

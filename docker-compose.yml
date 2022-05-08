@@ -94,6 +94,20 @@ services:
             TZ: 'Asia/Shanghai'
         networks:
             - sail
+     #rabbitmq container
+    rabbitmq:
+        hostname: myrabbitmq
+        image: rabbitmq:management
+        ports:
+            - 15673:15672
+            - 5673:5672
+        volumes:
+            - sailrabbitmq:/var/lib/rabbitmq
+        networks:
+            - sail
+# ————————————————
+# 版权声明：本文为CSDN博主「小码农叔叔」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+# 原文链接：https://blog.csdn.net/zhangcongyi420/article/details/105324128
 networks:
     sail:
         driver: bridge
@@ -103,4 +117,6 @@ volumes:
     sailredis:
         driver: local
     sailmeilisearch:
+        driver: local
+    sailrabbitmq:
         driver: local

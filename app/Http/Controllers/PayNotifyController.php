@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Jobs\AddScore;
 use App\Models\Orders as Order;
 use App\Models\PayNotify;
+use Illuminate\Support\Facades\DB;
 
 class PayNotifyController extends Controller
 {
@@ -26,20 +27,20 @@ class PayNotifyController extends Controller
         }
 
         $ordersn = $request->input('ordersn');
-        \DB::beginTransaction();
+        DB::beginTransaction();
         try {
             $res = $this->order->paid($ordersn);
             $res1 = $this->payNotify->paid($ordersn);
             if (!$res || !$res1) {
-                \DB::rollback();
+                DB::rollback();
                 return false;
             }
             AddScore::dispatchNow($ordersn);
-        } catch (Exception $e) {
-            \DB::rollback();
+        } catch (\Exception $e) {
+            DB::rollback();
             return false;
         }
-        \DB::commit();
+        DB::commit();
         return true;
     }
 

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Orders;
 use App\Jobs\CloseOrder;
+use App\Jobs\CloseOrderFail;
+use App\Jobs\Hello;
+use Illuminate\Support\Facades\Log;
 use X12311231\Rpc1\Test1;
 use X12311231\Rpc1\Client\Client;
 
@@ -37,10 +40,18 @@ class TestController extends Controller
             'ordersn' => time() . rand(1, 100),
         ]);
         //$this->dispatch((new CloseOrder($order, 30))->onQueue('default'));
-        CloseOrder::dispatch($order, 30)
-            ->delay(now()->addMinutes(1));
+        CloseOrder::dispatch($order, 30);
+            // ->delay(now()->addMinutes(1));
+
+        // CloseOrderFail::dispatch($order, 10)
+        // ->delay(now()->addMinutes(1));
         return $order;
 
+    }
+
+    public function testHelloJob() {
+        Log::debug('helo job');
+        Hello::dispatch('hello job ' . time(), 10);
     }
 
     public function test2()

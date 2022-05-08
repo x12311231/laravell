@@ -9,6 +9,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Orders;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class CloseOrderFail implements ShouldQueue
@@ -43,7 +44,7 @@ class CloseOrderFail implements ShouldQueue
             return;
         }
         // 通过事务执行 sql
-        \DB::transaction(function() {
+        DB::transaction(function() {
             // 将订单的 is_close 字段标记为 true，即关闭订单
             //$this->order->update(['is_close' => 1]);
             $this->order->update(['is_close' => 'a']);//抛出异常

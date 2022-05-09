@@ -14,7 +14,7 @@
         "predis/predis": "^1.1",
         "tabuna/stone": "0.0.2",
         "vladimir-yuldashev/laravel-queue-rabbitmq": "v11.3.0",
-        "x12311231/rpc1": "dev-master"
+        "x12311231/rpc1": "dev-main"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

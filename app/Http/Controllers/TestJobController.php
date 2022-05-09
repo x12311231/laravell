@@ -37,6 +37,19 @@ class TestJobController extends Controller
         ->dispatch();
     }
 
+    public function testChainExceptionButNoRollback() {
+        $task = "task rollback " . date('YmdHis');
+        Log::debug('[testChainExceptionButNoRollback]');
+        Bus::chain([
+            new Chain1($task),
+            new Chain2($task),
+            new Chain3($task),
+        ])->catch(function(Throwable $e) {
+            Log::emergency('[testChainExceptionButNoRollback]');
+            return;
+        })->dispatch();
+    }
+
     public function testChainExceptionRollback() {
         $task = "task rollback " . date('YmdHis');
         Log::debug('[testChainExceptionRollback]');
@@ -66,5 +79,9 @@ class TestJobController extends Controller
             return;
         })->dispatch();
         DB::commit();
+    }
+
+    public function testChain1Simple() {
+        Chain1::dispatchSync(' hello chain 1');
     }
 }

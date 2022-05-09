@@ -9,6 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class Chain1 implements ShouldQueue
 {
@@ -33,6 +34,7 @@ class Chain1 implements ShouldQueue
      */
     public function handle()
     {
+        Log::debug('[chain name]' . $this->name);
         Chain::create(['name' => $this->name]);
     }
 }

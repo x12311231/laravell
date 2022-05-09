@@ -79,3 +79,16 @@ var b = [['id','in',[1,3]],['is_close','=',0]]
 #引入了rabbitmq作为队列（20220508）https://www.5axxw.com/wiki/content/21fnkg
   1，直接输出hello的简单延时任务执行成功
   2，新增订单后延时修改状态的任务执行失败，这个在redis作为驱动时是成功的
+
+#经测试Bus::chain()->catch(),捕获异常后无法进行回滚
+```
+022-05-09T08:20:04.448930Z	  293 Query	START TRANSACTION
+2022-05-09T08:20:04.468456Z	  293 Query	COMMIT
+2022-05-09T08:20:04.482259Z	  293 Quit
+2022-05-09T08:20:04.859569Z	  253 Prepare	insert into `chains` (`name`, `updated_at`, `created_at`) values (?, ?, ?)
+2022-05-09T08:20:04.860690Z	  253 Execute	insert into `chains` (`name`, `updated_at`, `created_at`) values ('chain1 task commit 20220509082004', '2022-05-09 08:20:04', '2022-05-09 08:20:04')
+2022-05-09T08:20:04.865026Z	  253 Close stmt
+2022-05-09T08:20:04.874945Z	  253 Prepare	insert into `chains` (`name`, `updated_at`, `created_at`) values (?, ?, ?)
+2022-05-09T08:20:04.876039Z	  253 Execute	insert into `chains` (`name`, `updated_at`, `created_at`) values ('chain3 task commit 20220509082004', '2022-05-09 08:20:04', '2022-05-09 08:20:04')
+2022-05-09T08:20:04.879728Z	  253 Close stmt
+```

@@ -46,5 +46,7 @@ Route::prefix('testJob')->group(function() {
     Route::get('chain', [TestJobController::class, 'testChain']);
     Route::get('chainExcept', [TestJobController::class, 'testChainException']);
     Route::get('ChainExceptionRollback', [TestJobController::class, 'testChainExceptionRollback']);
+    Route::get('ChainExceptionButNoRollback', [TestJobController::class, 'testChainExceptionButNoRollback']);
     Route::get('ChainCommit', [TestJobController::class, 'testChainCommit']);
+    Route::get('Chain1Simple', [TestJobController::class, 'testChain1Simple']);
 });

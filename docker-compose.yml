@@ -40,7 +40,7 @@ services:
             MYSQL_ALLOW_EMPTY_PASSWORD: 1
             TZ: 'Asia/Shanghai'
         volumes:
-            - 'sailmysql:/var/lib/mysql'
+            - './volumes/mysql:/var/lib/mysql'
         networks:
             - sail
         healthcheck:
@@ -55,7 +55,7 @@ services:
         ports:
             - '${FORWARD_REDIS_PORT:-6379}:6379'
         volumes:
-            - 'sailredis:/data'
+            - './volumes/redis:/data'
         networks:
             - sail
         healthcheck:
@@ -68,7 +68,7 @@ services:
         ports:
             - '${FORWARD_MEILISEARCH_PORT:-7700}:7700'
         volumes:
-            - 'sailmeilisearch:/data.ms'
+            - './volumes/meilisearch:/data.ms'
         networks:
             - sail
         healthcheck:
@@ -102,7 +102,7 @@ services:
             - 15673:15672
             - 5673:5672
         volumes:
-            - sailrabbitmq:/var/lib/rabbitmq
+            - ./volumes/rabbitmq:/var/lib/rabbitmq
         networks:
             - sail
 # ————————————————

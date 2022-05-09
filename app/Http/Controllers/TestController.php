@@ -51,6 +51,7 @@ class TestController extends Controller
 
     public function testHelloJob() {
         Log::debug('helo job');
+        // Hello::dispatch('hello job ok', 0);
         Hello::dispatch('hello job ' . time(), 10);
     }
 
@@ -77,5 +78,10 @@ class TestController extends Controller
             //dd($config);
         $rpc = new Client($config['driver'], $config['server'], app()->get('log'));
         $rpc->test();
+    }
+
+    public function testSleep() {
+        sleep(10);
+        return 'sleep 10';
     }
 }

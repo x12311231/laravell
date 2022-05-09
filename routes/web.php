@@ -31,6 +31,7 @@ Route::get('/t3', [TestController::class, 'test3']);
 Route::get('/tsocket', [TestController::class, 'testSocket']);
 Route::get('/test/test_order', [TestController::class, 'testOrder']);
 Route::get('/test/testjob', [TestController::class, 'testHelloJob']);
+Route::get('/test/testsleep', [TestController::class, 'testSleep']);
 Route::get('order/create', [OrderController::class, 'create']);
 Route::get('order/create1', [OrderController::class, 'create1']);
 Route::get('pay/notify', [PayController::class, 'notify']);

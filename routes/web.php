@@ -5,6 +5,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PayController;
 use App\Http\Controllers\Admin\OrderController as AdminOrder;
+use App\Http\Controllers\TestJobController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,9 @@ Route::prefix('admin')->group(function () {
 });
 //Route::resource('order', 'Admin/OrderController');
 
+Route::prefix('testJob')->group(function() {
+    Route::get('chain', [TestJobController::class, 'testChain']);
+    Route::get('chainExcept', [TestJobController::class, 'testChainException']);
+    Route::get('ChainExceptionRollback', [TestJobController::class, 'testChainExceptionRollback']);
+    Route::get('ChainCommit', [TestJobController::class, 'testChainCommit']);
+});

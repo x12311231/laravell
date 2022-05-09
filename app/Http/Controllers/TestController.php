@@ -54,6 +54,7 @@ class TestController extends Controller
         // Hello::dispatch('hello job ok', 0);
         Hello::dispatch('hello job ' . time(), 10);
     }
+    
 
     public function test2()
     {

@@ -92,3 +92,19 @@ var b = [['id','in',[1,3]],['is_close','=',0]]
 2022-05-09T08:20:04.876039Z	  253 Execute	insert into `chains` (`name`, `updated_at`, `created_at`) values ('chain3 task commit 20220509082004', '2022-05-09 08:20:04', '2022-05-09 08:20:04')
 2022-05-09T08:20:04.879728Z	  253 Close stmt
 ```
+
+#事件是如何触发的？
+```
+class EventServiceProvider extends ServiceProvider
+{
+    /**
+     * The event listener mappings for the application.
+     *
+     * @var array
+     */
+    protected $listen = [
+        Registered::class => [
+            SendEmailVerificationNotification::class,
+        ],
+    ];
+```

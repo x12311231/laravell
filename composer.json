@@ -14,11 +14,12 @@
         "predis/predis": "^1.1",
         "tabuna/stone": "0.0.2",
         "vladimir-yuldashev/laravel-queue-rabbitmq": "v11.3.0",
-        "x12311231/rpc1": "dev-main"
+        "x12311231/rpc1": "dev-master"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
+        "laravel/breeze": "^1.9",
         "laravel/sail": "1.12.9",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^5.10",

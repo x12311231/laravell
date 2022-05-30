@@ -94,6 +94,8 @@ var b = [['id','in',[1,3]],['is_close','=',0]]
 ```
 
 #事件是如何触发的？
+答：event(new DemoEvent($obj))
+如，注册事件
 ```
 class EventServiceProvider extends ServiceProvider
 {
@@ -108,3 +110,9 @@ class EventServiceProvider extends ServiceProvider
         ],
     ];
 ```
+答：
+1，安装认证模块（http://laravel.p2hp.com/cndocs/8.x/starter-kits）
+
+#事件是什么？
+ 1，事件以类的形式而存在，一般不存在过多的逻辑
+ 2，App\Providers\EventServiceProvider中可以注册事件的逻辑关系

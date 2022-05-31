@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Events\Illuminate\Auth\Events\Logined;
+use App\Events\TestEvent2;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
@@ -41,6 +42,7 @@ class AuthenticatedSessionController extends Controller
         Log::debug('user ' . var_export($user, true));
         Log::debug('config ' . var_export(config('auth.defaults'), true));
         event(new Login(config('auth.defaults.guard'), $user, $request->input('remember')));
+        event(new TestEvent2);
         
 
         return redirect()->intended(RouteServiceProvider::HOME);

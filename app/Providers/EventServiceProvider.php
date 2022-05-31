@@ -14,6 +14,8 @@ use App\Listeners\TestListener;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Log;
 
+use function Illuminate\Events\queueable;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -41,8 +43,18 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Event::listen(function(Login $event) {
+        Event::listen(queueable(function(Login $event) {
             Log::debug('用户登录了，闭包事件记录' . var_export($event, true));
-        });
+        })->delay(10));
+    }
+
+    /**
+     * 确定是否应用自动发现事件和侦听器。
+     *
+     * @return bool
+     */
+    public function shouldDiscoverEvents()
+    {
+        return true;
     }
 }

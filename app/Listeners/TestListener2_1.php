@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Log;
 
-class TestListener2
+class TestListener2_1
 {
     /**
      * Create the event listener.
@@ -27,6 +27,6 @@ class TestListener2
      */
     public function handle(TestEvent2 $event)
     {
-        Log::debug('触发事件监听App\Listeners\TestListener2');
+        Log::debug('触发事件监听App\Listeners\TestListener2_1');
     }
 }

@@ -118,4 +118,18 @@ class EventServiceProvider extends ServiceProvider
  2，App\Providers\EventServiceProvider中可以注册事件的逻辑关系
 
  #配置机制
- 
+
+ #事件自动发现后（不用注册到服务提供者），
+  1，事件监听会自动匹配吗(触发逻辑)？会
+```
+
+    /**
+     * 确定是否应用自动发现事件和侦听器。
+     *
+     * @return bool
+     */
+    public function shouldDiscoverEvents()
+    {
+        return true;
+    }
+```

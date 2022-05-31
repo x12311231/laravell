@@ -133,3 +133,8 @@ class EventServiceProvider extends ServiceProvider
         return true;
     }
 ```
+
+#事件可以实现ShouldQueue接口吗？还是事件监听可以？
+ 1，事件监听器队列（http://laravel.p2hp.com/cndocs/8.x/events#queued-event-listeners）
+
+#队列默认监听default，如何监听所有？

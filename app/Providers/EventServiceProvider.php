@@ -9,6 +9,10 @@ use App\Listeners\Illuminate\Auth\Listeners\LogLogined;
 use App\Listeners\Illuminate\Auth\Listeners\LogLogined1;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use App\Events\TestEvent;
+use App\Listeners\TestListener;
+use Illuminate\Auth\Events\Login;
+use Illuminate\Support\Facades\Log;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -24,6 +28,9 @@ class EventServiceProvider extends ServiceProvider
         Logined::class => [
             LogLogined::class,
             LogLogined1::class,
+        ],
+        TestEvent::class => [
+            TestListener::class,
         ]
     ];
 
@@ -34,6 +41,8 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Event::listen(function(Login $event) {
+            Log::debug('用户登录了，闭包事件记录' . var_export($event, true));
+        });
     }
 }

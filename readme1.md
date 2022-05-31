@@ -116,3 +116,6 @@ class EventServiceProvider extends ServiceProvider
 #事件是什么？
  1，事件以类的形式而存在，一般不存在过多的逻辑
  2，App\Providers\EventServiceProvider中可以注册事件的逻辑关系
+
+ #配置机制
+ 
